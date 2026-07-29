@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;18cf4c354b15d9d5d66bd08c91afd5f7af1a76b5fe3f004459fb9f39a4c7d190;C:/Users/bahad/OneDrive/Desktop/BussinesWebsite/frontend/src/app/features/admin/product-form.ts"],
+  "sourcesContent": ["\n    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; padding-top: 8px; min-width: min(74vw, 620px); }\n    .wide { grid-column: 1 / -1; }\n    .toggles { display: flex; gap: 24px; padding: 12px 0 4px; flex-wrap: wrap; }\n    @media (max-width: 599px) { .fields { grid-template-columns: 1fr; min-width: 0; } }\n  "],
+  "mappings": ";AACI,CAAC;AAAS,WAAS;AAAM,yBAAuB,IAAI;AAAK,OAAK,IAAI;AAAM,eAAa;AAAK,aAAW,IAAI,IAAI,EAAE;AAAQ;AACvH,CAAC;AAAO,eAAa,EAAE,EAAE;AAAI;AAC7B,CAAC;AAAU,WAAS;AAAM,OAAK;AAAM,WAAS,KAAK,EAAE;AAAK,aAAW;AAAM;AAC3E,QAAO,WAAY;AAAS,GAH3B;AAGqC,2BAAuB;AAAK,eAAW;AAAG;AAAE;",
+  "names": []
+}

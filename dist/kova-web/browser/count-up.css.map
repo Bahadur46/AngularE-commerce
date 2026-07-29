@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;17058fcd61efe05762db839b000b933113962bfdee9f13402d4e6374f37a5deb;C:/Users/bahad/OneDrive/Desktop/BussinesWebsite/frontend/src/app/shared/components/count-up.ts"],
+  "sourcesContent": [":host { font-variant-numeric: tabular-nums; }"],
+  "mappings": ";AAAA;AAAQ,wBAAsB;AAAc;",
+  "names": []
+}

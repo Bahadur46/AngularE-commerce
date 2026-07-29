@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;13916356be837c883e1fec5b783ceff3221375a476f71338936faf72d94e1af0;C:/Users/bahad/OneDrive/Desktop/BussinesWebsite/frontend/src/app/shared/components/star-rating.ts"],
+  "sourcesContent": ["\n    .stars { display: inline-flex; align-items: center; gap: 1px; }\n    mat-icon {\n      font-size: 15px; width: 15px; height: 15px;\n      color: var(--mat-sys-outline);\n    }\n    mat-icon.filled {\n      color: var(--mat-sys-tertiary);\n      font-variation-settings: 'FILL' 1;\n    }\n    small { margin-left: 6px; font-size: 0.75rem; }\n  "],
+  "mappings": ";AACI,CAAC;AAAQ,WAAS;AAAa,eAAa;AAAQ,OAAK;AAAK;AAC9D;AACE,aAAW;AAAM,SAAO;AAAM,UAAQ;AACtC,SAAO,IAAI;AACb;AACA,QAAQ,CAAC;AACP,SAAO,IAAI;AACX,2BAAyB,OAAO;AAClC;AACA;AAAQ,eAAa;AAAK,aAAW;AAAS;",
+  "names": []
+}

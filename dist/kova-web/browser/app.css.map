@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;81519d3d7ac0b43f49421eefa62cc17b752cdb9572a8b24d9bd81fb99098088d;C:/Users/bahad/OneDrive/Desktop/BussinesWebsite/frontend/src/app/app.ts"],
+  "sourcesContent": ["\n    :host { display: flex; flex-direction: column; min-height: 100dvh; }\n    main { flex: 1 1 auto; }\n    .skip {\n      position: absolute; left: 12px; top: -60px; z-index: 100;\n      padding: 10px 16px; border-radius: 8px;\n      background: var(--mat-sys-primary); color: var(--mat-sys-on-primary);\n      transition: top 120ms ease;\n    }\n    .skip:focus { top: 12px; }\n  "],
+  "mappings": ";AACI;AAAQ,WAAS;AAAM,kBAAgB;AAAQ,cAAY;AAAQ;AACnE;AAAO,QAAM,EAAE,EAAE;AAAM;AACvB,CAAC;AACC,YAAU;AAAU,QAAM;AAAM,OAAK;AAAO,WAAS;AACrD,WAAS,KAAK;AAAM,iBAAe;AACnC,cAAY,IAAI;AAAoB,SAAO,IAAI;AAC/C,cAAY,IAAI,MAAM;AACxB;AACA,CANC,IAMI;AAAS,OAAK;AAAM;",
+  "names": []
+}

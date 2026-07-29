@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;1aae75ac8b9e397eadd33d4c35502fb6239c57b6908ae94a2d35d98c233341bc;C:/Users/bahad/OneDrive/Desktop/BussinesWebsite/frontend/src/app/features/orders/track-order.ts"],
+  "sourcesContent": ["\n    .narrow { max-width: 640px; }\n    h1 { margin: 6px 0 8px; }\n    p { margin: 0 0 24px; }\n    .lookup { display: flex; gap: 12px; align-items: start; margin-bottom: 28px; }\n    .lookup mat-form-field { flex: 1; }\n    .lookup button { --mat-filled-button-container-height: 52px; }\n    .miss { color: var(--mat-sys-error); font-size: 0.875rem; }\n  "],
+  "mappings": ";AACI,CAAC;AAAS,aAAW;AAAO;AAC5B;AAAK,UAAQ,IAAI,EAAE;AAAK;AACxB;AAAI,UAAQ,EAAE,EAAE;AAAM;AACtB,CAAC;AAAS,WAAS;AAAM,OAAK;AAAM,eAAa;AAAO,iBAAe;AAAM;AAC7E,CADC,OACO;AAAiB,QAAM;AAAG;AAClC,CAFC,OAEO;AAAS,wCAAsC;AAAM;AAC7D,CAAC;AAAO,SAAO,IAAI;AAAkB,aAAW;AAAU;",
+  "names": []
+}

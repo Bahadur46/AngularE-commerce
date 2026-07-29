@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;ff838d482021211c71fcbee8851672b8ea3d7decefd50d64871ba9ee2f242549;C:/Users/bahad/OneDrive/Desktop/BussinesWebsite/frontend/src/app/shared/components/loading-grid.ts"],
+  "sourcesContent": ["\n    .skeleton { display: flex; flex-direction: column; gap: 10px; }\n    .frame { aspect-ratio: 1; border-radius: 12px; }\n    .line { height: 12px; border-radius: 6px; }\n    .shimmer {\n      background: linear-gradient(90deg,\n        var(--mat-sys-surface-container-high) 25%,\n        var(--mat-sys-surface-container-highest) 50%,\n        var(--mat-sys-surface-container-high) 75%);\n      background-size: 200% 100%;\n      animation: slide 1.4s ease-in-out infinite;\n    }\n    @keyframes slide { to { background-position: -200% 0; } }\n  "],
+  "mappings": ";AACI,CAAC;AAAW,WAAS;AAAM,kBAAgB;AAAQ,OAAK;AAAM;AAC9D,CAAC;AAAQ,gBAAc;AAAG,iBAAe;AAAM;AAC/C,CAAC;AAAO,UAAQ;AAAM,iBAAe;AAAK;AAC1C,CAAC;AACC;AAAA,IAAY;AAAA,MAAgB,KAAK;AAAA,MAC/B,IAAI,kCAAkC,GAAG;AAAA,MACzC,IAAI,qCAAqC,GAAG;AAAA,MAC5C,IAAI,kCAAkC;AACxC,mBAAiB,KAAK;AACtB,aAAW,MAAM,KAAK,YAAY;AACpC;AACA,WAFa;AAEM;AAAK,yBAAqB,MAAM;AAAG;AAAE;",
+  "names": []
+}

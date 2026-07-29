@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["angular:styles/component:css;9e1e799558a9f52e451c02eed53f69c10beebefb71fed214768d448a8cefcdac;C:/Users/bahad/OneDrive/Desktop/BussinesWebsite/frontend/src/app/shared/components/not-found.ts"],
-  "sourcesContent": ["\n    .wrap { display: flex; flex-direction: column; gap: 14px; align-items: start; padding-block: 96px; }\n    p { margin: 0; max-width: 46ch; }\n  "],
-  "mappings": ";AACI,CAAC;AAAO,WAAS;AAAM,kBAAgB;AAAQ,OAAK;AAAM,eAAa;AAAO,iBAAe;AAAM;AACnG;AAAI,UAAQ;AAAG,aAAW;AAAM;",
-  "names": []
-}

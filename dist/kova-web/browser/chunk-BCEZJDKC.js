@@ -1,0 +1,1 @@
+var e=["Pending","Processing","Shipped","Delivered"],r=[...e,"Cancelled"],t={Pending:"Pending",Processing:"Processing",Shipped:"Shipped",Delivered:"Delivered",Cancelled:"Cancelled"};export{e as a,r as b,t as c};

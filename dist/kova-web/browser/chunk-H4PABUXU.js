@@ -1,0 +1,1 @@
+import{a as r}from"./chunk-EYTOUDYW.js";import{qb as n}from"./chunk-L6CW5TDJ.js";var i=class e{formatter=new Intl.NumberFormat(r.locale,{style:"currency",currency:r.currency,maximumFractionDigits:0});transform(t){return this.formatter.format(t??0)}static \u0275fac=function(m){return new(m||e)};static \u0275pipe=n({name:"KovaPrice",type:e,pure:!0})};export{i as a};

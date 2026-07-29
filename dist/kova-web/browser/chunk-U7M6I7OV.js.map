@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/core/services/currency.ts"],
-  "sourcesContent": ["import { Pipe, PipeTransform } from '@angular/core';\nimport { environment } from '@env/environment';\n\n/** Prices are whole rupees in this catalogue; paise only clutter the column. */\n@Pipe({ name: 'KovaPrice', standalone: true })\nexport class PricePipe implements PipeTransform {\n  private readonly formatter = new Intl.NumberFormat(environment.locale, {\n    style: 'currency',\n    currency: environment.currency,\n    maximumFractionDigits: 0\n  });\n\n  transform(value: number | null | undefined): string {\n    return this.formatter.format(value ?? 0);\n  }\n}\n"],
-  "mappings": ";;;;;;;;;;AAKM,IAAO,YAAP,MAAO,WAAS;EACH,YAAY,IAAI,KAAK,aAAa,YAAY,QAAQ;IACrE,OAAO;IACP,UAAU,YAAY;IACtB,uBAAuB;GACxB;EAED,UAAU,OAAgC;AACxC,WAAO,KAAK,UAAU,OAAO,SAAS,CAAC;EACzC;;qCATW,YAAS;EAAA;wFAAT,YAAS,MAAA,KAAA,CAAA;;;sEAAT,WAAS,CAAA;UADrB;WAAK,EAAE,MAAM,aAAa,YAAY,KAAI,CAAE;;;",
-  "names": []
-}

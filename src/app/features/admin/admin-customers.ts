@@ -20,7 +20,7 @@ import { Paged, User } from '@core/models';
     <div class="section-head">
       <div>
         <span class="eyebrow">People</span>
-        <h1>Customers</h1>
+        <h1>Customersnew</h1>
       </div>
     </div>
 

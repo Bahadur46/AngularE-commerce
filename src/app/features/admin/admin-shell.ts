@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { Auth } from '@core/services/auth';
+import { ADMIN_GROUPS } from '@core/admin-nav';
 
 @Component({
   selector: 'Kova-admin-shell',
@@ -108,39 +109,6 @@ export class AdminShell {
   protected readonly auth = inject(Auth);
   protected readonly collapsed = signal(false);
 
-  /**
-   * Grouped rather than one flat list: what you look at, what you edit, and
-   * what you configure are three different visits to this page.
-   */
-  protected readonly groups = [
-    {
-      title: 'Overview',
-      links: [
-        { path: 'dashboard', label: 'Dashboard', icon: 'monitoring' },
-        { path: 'reports', label: 'Reports', icon: 'lab_profile' }
-      ]
-    },
-    {
-      title: 'Selling',
-      links: [
-        { path: 'orders', label: 'Orders', icon: 'receipt_long' },
-        { path: 'products', label: 'Products', icon: 'inventory_2' },
-        { path: 'categories', label: 'Categories', icon: 'category' },
-        { path: 'coupons', label: 'Coupons', icon: 'sell' },
-        { path: 'banners', label: 'Banners', icon: 'wallpaper' }
-      ]
-    },
-    {
-      title: 'People',
-      links: [
-        { path: 'customers', label: 'Customers', icon: 'group' }
-      ]
-    },
-    {
-      title: 'Shop',
-      links: [
-        { path: 'settings', label: 'Settings', icon: 'settings' }
-      ]
-    }
-  ];
+  /** Shared with the site-wide strip, so the two never list different sections. */
+  protected readonly groups = ADMIN_GROUPS;
 }

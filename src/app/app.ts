@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './layout/header';
+import { AdminBar } from './layout/admin-bar';
 import { Footer } from './layout/footer';
 import { Auth } from '@core/services/auth';
 import { Cart } from '@core/services/cart';
@@ -8,11 +9,12 @@ import { Wishlist } from '@core/services/wishlist';
 
 @Component({
   selector: 'Kova-root',
-  imports: [RouterOutlet, Header, Footer],
+  imports: [RouterOutlet, Header, AdminBar, Footer],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <a class="skip" href="#main">Skip to content</a>
     <Kova-header />
+    <Kova-admin-bar />
     <main id="main"><router-outlet /></main>
     <Kova-footer />
   `,

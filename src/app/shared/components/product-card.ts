@@ -49,11 +49,6 @@ import { StarRating } from './star-rating';
             {{ product().stock === 0 ? 'Sold out' : 'Add' }}
           </button>
         </div>
-
-        <button mat-flat-button class="order card-order" [disabled]="product().stock === 0" (click)="orderNow()">
-          Order Now
-          <mat-icon fontSet="material-symbols-outlined" iconPositionEnd>arrow_forward</mat-icon>
-        </button>
       </div>
     </article>
   `,
@@ -94,19 +89,6 @@ import { StarRating } from './star-rating';
     .prices strong { font-size: 1rem; font-weight: 600; }
     .prices s { font-size: 0.8125rem; }
     .add { --mat-filled-button-container-height: 34px; font-size: 0.8125rem; }
-
-    /* The gold order button, sized down to sit inside a grid card. */
-    .card-order.mat-mdc-button-base {
-      width: 100%;
-      height: 38px;
-      margin-top: 8px;
-      font-size: 0.8125rem;
-      --mat-button-filled-horizontal-padding: 18px;
-      box-shadow: 0 6px 18px rgba(217, 181, 81, 0.18);
-    }
-    .card-order.mat-mdc-button-base:hover { box-shadow: 0 8px 22px rgba(217, 181, 81, 0.28); }
-    .card-order mat-icon { font-size: 18px; width: 18px; height: 18px; }
-    .card-order[disabled] { box-shadow: none; }
   `
 })
 export class ProductCard {
@@ -123,15 +105,6 @@ export class ProductCard {
   protected add(): void {
     if (!this.requireAccount()) return;
     this.cart.add(this.product().id, 1);
-  }
-
-  /** Straight to checkout — the item is added first so the order is complete. */
-  protected orderNow(): void {
-    if (!this.requireAccount()) return;
-    this.cart.addItem(this.product().id, 1).subscribe({
-      next: () => void this.router.navigate(['/checkout']),
-      error: () => void 0   // the error interceptor already surfaced the reason
-    });
   }
 
   protected toggleSaved(): void {

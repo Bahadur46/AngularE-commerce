@@ -40,9 +40,10 @@ let seq = 0;
     </span>
   `,
   styles: `
-    .logo { display: inline-flex; align-items: center; gap: 10px; }
+    .logo { display: inline-flex; align-items: center; gap: 10px; max-width: 100%; }
     .mark { width: 30px; height: 30px; flex: none; }
-    .words { display: flex; flex-direction: column; line-height: 1; }
+    /* The mark is never sacrificed; the words clip if the host is too narrow. */
+    .words { display: flex; flex-direction: column; line-height: 1; min-width: 0; overflow: hidden; }
 
     .wordmark {
       font-family: 'Playfair Display', Georgia, serif;
@@ -61,6 +62,12 @@ let seq = 0;
     .lg .mark { width: 44px; height: 44px; }
     .lg .wordmark { font-size: 1.875rem; }
     .lg .tag { font-size: 0.5625rem; letter-spacing: 0.24em; }
+
+    @media (max-width: 599px) {
+      .logo:not(.lg) { gap: 8px; }
+      .logo:not(.lg) .mark { width: 26px; height: 26px; }
+      .logo:not(.lg) .wordmark { font-size: 1rem; }
+    }
   `
 })
 export class BrandLogo {

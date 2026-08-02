@@ -88,6 +88,12 @@ import { Notify } from '@core/services/notify';
       background: var(--mat-sys-error-container); color: var(--mat-sys-on-error-container);
     }
     .failed mat-icon { font-size: 18px; width: 18px; height: 18px; flex: none; }
+
+    @media (max-width: 599px) {
+      .auth { min-height: 0; }
+      .card { padding: 24px 20px 28px; border-radius: 16px; }
+      h1 { font-size: 2rem; }
+    }
   `
 })
 export class SignIn {

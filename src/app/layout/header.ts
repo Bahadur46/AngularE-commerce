@@ -45,7 +45,7 @@ import { BrandLogo } from '@shared/components/brand-logo';
       </mat-sidenav>
 
       <mat-sidenav-content>
-        <mat-toolbar class="bar">
+        <mat-toolbar class="bar" [class.searching]="searchOpen()">
           <button mat-icon-button class="only-mobile" (click)="drawer.toggle()" aria-label="Open menu">
             <mat-icon fontSet="material-symbols-outlined">menu</mat-icon>
           </button>
@@ -61,7 +61,7 @@ import { BrandLogo } from '@shared/components/brand-logo';
             }
           </nav>
 
-          <form class="search" (submit)="submitSearch($event)" role="search">
+          <form class="search" [class.open]="searchOpen()" (submit)="submitSearch($event)" role="search">
             <mat-icon fontSet="material-symbols-outlined">search</mat-icon>
             <input [(ngModel)]="term" name="q" [matAutocomplete]="auto"
                    (ngModelChange)="suggest$.next($event)"
@@ -73,7 +73,14 @@ import { BrandLogo } from '@shared/components/brand-logo';
 
           <span class="spacer"></span>
 
-        
+          <!-- On a phone the field itself does not fit beside the mark and the
+               account controls, so it collapses to this toggle and drops onto a
+               second row when opened. -->
+          <button mat-icon-button class="only-mobile" (click)="searchOpen.set(!searchOpen())"
+                  [attr.aria-expanded]="searchOpen()"
+                  [attr.aria-label]="searchOpen() ? 'Hide search' : 'Search'">
+            <mat-icon fontSet="material-symbols-outlined">{{ searchOpen() ? 'close' : 'search' }}</mat-icon>
+          </button>
 
           <a mat-icon-button routerLink="/wishlist" aria-label="Wishlist"
              [matBadge]="wishlist.count() || null" matBadgeSize="small" matBadgeColor="accent">
@@ -134,7 +141,10 @@ import { BrandLogo } from '@shared/components/brand-logo';
       border-bottom: 1px solid var(--Kova-rule);
     }
 
-    .brand { margin-right: 8px; flex: none; }
+    /* Shrinkable, not fixed: the account and cart buttons are what a phone user
+       actually needs to reach, so the wordmark is what gives way when the bar
+       runs out of room — never the controls on the right. */
+    .brand { margin-right: 8px; flex: 0 1 auto; min-width: 0; overflow: hidden; }
 
     .links { display: flex; gap: 20px; margin-inline: 12px; }
     .links a {
@@ -174,6 +184,26 @@ import { BrandLogo } from '@shared/components/brand-logo';
       .bar { height: 60px; gap: 2px; padding-inline: 8px; }
       .search { flex-basis: 140px; margin-inline: 4px; padding: 6px 10px; }
     }
+
+    @media (max-width: 599px) {
+      /* nowrap is deliberate: with wrapping the account button drops onto a
+         second row instead of the wordmark giving way, which is backwards. */
+      .bar { flex-wrap: nowrap; gap: 0; padding-inline: 6px; }
+
+      /* Hard cap rather than flex-shrink, so that opening the search below can
+         turn wrapping on without the account button being the thing that wraps.
+         220px = 6+6 padding, the 40px menu button, four 40px controls, 4px margin. */
+      .brand { margin-right: 4px; max-width: calc(100vw - 220px); }
+
+      /* The field takes a row of its own under the controls, only once asked
+         for — it cannot fit beside the mark and the account buttons. */
+      .search { display: none; }
+      .bar.searching { flex-wrap: wrap; height: auto; padding-bottom: 8px; }
+      .search.open {
+        display: flex; order: 10; flex: 1 0 100%;
+        margin: 0 2px; max-width: none;
+      }
+    }
   `
 })
 export class Header {
@@ -186,6 +216,9 @@ export class Header {
 
   protected term = '';
   protected readonly suggest$ = new Subject<string>();
+
+  /** Phone only — above 599px the field is always on the bar. */
+  protected readonly searchOpen = signal(false);
 
   protected readonly suggestions = toSignal(
     this.suggest$.pipe(

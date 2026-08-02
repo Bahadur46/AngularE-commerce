@@ -1,0 +1,43 @@
+# Dependencies — restored on the build machine from package-lock.json
+/node_modules
+
+# Build artefacts — Vercel and the Azure workflow build these themselves
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Angular / tooling caches
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# Vercel CLI
+.vercel
+
+# Environment overrides
+.env
+.env.local
+.env.*.local
+
+# Editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# System
+.DS_Store
+Thumbs.db

@@ -2,9 +2,12 @@ import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@a
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { Admin } from '@core/services/admin';
 import { Catalog } from '@core/services/catalog';
 import { Notify } from '@core/services/notify';
 import { Category } from '@core/models';
+import { CategoryForm, CategoryFormData, CategoryUpsert } from './category-form';
 
 @Component({
   selector: 'Kova-admin-categories',
@@ -20,7 +23,7 @@ import { Category } from '@core/models';
       <div class="actions">
         <input class="search" type="search" placeholder="Filter shelves"
                [value]="term()" (input)="term.set($any($event.target).value)" aria-label="Filter categories" />
-        <button mat-flat-button (click)="notify.problem('Creating a shelf needs the API — the catalogue here is read-only.')">
+        <button mat-flat-button (click)="openForm(null)">
           <mat-icon fontSet="material-symbols-outlined">add</mat-icon>
           New category
         </button>
@@ -43,13 +46,18 @@ import { Category } from '@core/models';
               <div><dt>Order</dt><dd class="numeric">{{ row.sortOrder }}</dd></div>
             </dl>
             <div class="row-actions">
-              <a mat-stroked-button [routerLink]="['/category', row.slug]">View on the shop</a>
+              <button mat-stroked-button (click)="openForm(row)">Edit</button>
+              <a mat-button [routerLink]="['/category', row.slug]">View on the shop</a>
               <a mat-button routerLink="../products">Curations on this shelf</a>
             </div>
           </div>
         </article>
       } @empty {
-        <p class="muted">No shelf matches “{{ term() }}”.</p>
+        @if (term().trim()) {
+          <p class="muted">No shelf matches “{{ term() }}”.</p>
+        } @else {
+          <p class="muted">No shelves yet. Create one before adding a curation — every product sits on a shelf.</p>
+        }
       }
     </div>
   `,
@@ -101,7 +109,9 @@ import { Category } from '@core/models';
   `
 })
 export class AdminCategories {
+  private readonly admin = inject(Admin);
   private readonly catalog = inject(Catalog);
+  private readonly dialog = inject(MatDialog);
   protected readonly notify = inject(Notify);
 
   private readonly all = signal<Category[]>([]);
@@ -118,6 +128,31 @@ export class AdminCategories {
     this.all().reduce((count, row) => count + row.productCount, 0));
 
   constructor() {
+    this.load();
+  }
+
+  private load(): void {
     this.catalog.categories().subscribe(rows => this.all.set(rows));
+  }
+
+  protected openForm(category: Category | null): void {
+    const data: CategoryFormData = {
+      category,
+      siblings: this.all().filter(row => row.id !== category?.id)
+    };
+
+    this.dialog.open(CategoryForm, { data, autoFocus: 'first-tabbable' })
+      .afterClosed().subscribe((body: CategoryUpsert | undefined) => {
+        if (!body) return;
+
+        const request = category
+          ? this.admin.updateCategory(category.id, body)
+          : this.admin.createCategory(body);
+
+        request.subscribe(() => {
+          this.notify.done(category ? 'Category saved' : 'Category created');
+          this.load();
+        });
+      });
   }
 }

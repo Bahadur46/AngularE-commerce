@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,7 +17,7 @@ import { ProductForm, ProductFormData } from './product-form';
 @Component({
   selector: 'Kova-admin-products',
   imports: [
-    FormsModule, MatButtonModule, MatIconModule,
+    RouterLink, FormsModule, MatButtonModule, MatIconModule,
     MatFormFieldModule, MatInputModule, MatPaginatorModule, PricePipe
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,11 +27,18 @@ import { ProductForm, ProductFormData } from './product-form';
         <span class="eyebrow">Catalogue</span>
         <h1>Products</h1>
       </div>
-      <button mat-flat-button (click)="openForm(null)">
+      <button mat-flat-button (click)="openForm(null)" [disabled]="!categories().length">
         <mat-icon fontSet="material-symbols-outlined">add</mat-icon>
         Add a product
       </button>
     </div>
+
+    @if (!categories().length) {
+      <p class="notice muted">
+        Every curation sits on a shelf, so
+        <a routerLink="../categories">create a category</a> before adding the first product.
+      </p>
+    }
 
     <mat-form-field class="search">
       <mat-label>Search products</mat-label>
@@ -81,6 +89,7 @@ import { ProductForm, ProductFormData } from './product-form';
     }
   `,
   styles: `
+    .notice { margin: 0 0 18px; font-size: 0.875rem; }
     .search { width: min(100%, 340px); margin-bottom: 20px; }
     .table-wrap { overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }

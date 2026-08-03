@@ -6,7 +6,9 @@
       "Bash(node scripts/validate_palette.js \"#3987e5,#2a78d6,#256abf,#1c5cab,#184f95\" --mode dark --ordinal)",
       "PowerShell(& \"C:\\\\Users\\\\bahad\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-bahad-OneDrive-Desktop-BussinesWebsite-frontend\\\\35f64ea2-2409-434e-a50e-1f04fa9e1cff\\\\scratchpad\\\\rename.ps1\")",
       "Bash(cd \"c:/Users/bahad/OneDrive/Desktop/BussinesWebsite/kova-commerce/kova-commerce/backend/Kova.Api\" && grep -n -i \"cors\\\\|WithOrigins\\\\|AllowAny\\\\|UrlS\\\\|applicationUrl\" Program.cs appsettings.json appsettings.Development.json)",
-      "Read(//c/Users/bahad/OneDrive/Desktop/BussinesWebsite/kova-commerce/kova-commerce/backend/Kova.Api/**)"
+      "Read(//c/Users/bahad/OneDrive/Desktop/BussinesWebsite/kova-commerce/kova-commerce/backend/Kova.Api/**)",
+      "Bash(cd \"c:/Users/bahad/OneDrive/Desktop/BussinesWebsite/frontend\" && ls src/environments 2>/dev/null; cat src/environments/*.ts 2>/dev/null; echo \"=== root ===\"; ls ..)",
+      "Read(//c/Users/bahad/OneDrive/Desktop/BussinesWebsite/**)"
     ]
   }
 }

@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { Auth } from '@core/services/auth';
+import { Theme } from '@core/services/theme';
 import { ADMIN_GROUPS } from '@core/admin-nav';
 
 @Component({
@@ -111,4 +112,12 @@ export class AdminShell {
 
   /** Shared with the site-wide strip, so the two never list different sections. */
   protected readonly groups = ADMIN_GROUPS;
+
+  constructor() {
+    // Tables, figures and charts are read for a long stretch, so the back
+    // office is white however the shopfront is set. The pin covers the header
+    // and footer too — a light page under a dark strip reads as a mistake.
+    // Leaving /admin hands the shop its own scheme back.
+    inject(DestroyRef).onDestroy(inject(Theme).pin('light'));
+  }
 }

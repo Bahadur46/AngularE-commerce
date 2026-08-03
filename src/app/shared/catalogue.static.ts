@@ -1,10 +1,11 @@
 // The whole shop, offline. Nine occasions, five curations each, every image
 // drawn by shared/curation-art rather than fetched.
 //
-// This is the single source the static Catalog serves from — the home page,
-// the shop grid, search, filters and the product page all read it. To go live,
-// drop the `{ provide: Catalog, useClass: StaticCatalog }` line in app.config
-// and this file stops being loaded.
+// The shop grid, search, filters and the product page are now live against the
+// API — `{ provide: Catalog, useClass: StaticCatalog }` is gone from app.config.
+// What is left reading this file is the home page (features/home/home.static),
+// the gift finder, and the in-memory cart, wishlist and order book. Put that
+// provider line back to serve the whole shop from here again.
 
 import { Category, Facets, Paged, Product, ProductListItem, ProductQuery, Review } from '@core/models';
 import { Motif, art, motifFor } from './curation-art';
